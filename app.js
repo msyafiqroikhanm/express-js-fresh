@@ -4,6 +4,7 @@ const errorHandling = require("./helpers/errorHandling.helper");
 const routes = require("./routes");
 const morgan = require("morgan");
 const cors = require("cors");
+const fs = require("fs");
 
 app.use(
   morgan("common", {
