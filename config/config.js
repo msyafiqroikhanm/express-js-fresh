@@ -1,29 +1,20 @@
 require("dotenv").config();
-const { DB_USERNAME, DB_PASSWORD, DB_NAME, DB_HOST, DB_DIALECT } = process.env;
 
 module.exports = {
   development: {
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    database: DB_NAME,
-    host: DB_HOST,
-    dialect: DB_DIALECT,
-  },
-  test: {
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    database: DB_NAME,
-    host: DB_HOST,
-    dialect: DB_DIALECT,
+    username: process.env.DEV_DB_USERNAME,
+    password: process.env.DEV_DB_PASSWORD,
+    database: process.env.DEV_DB_NAME,
+    host: process.env.DEV_DB_HOST,
+    dialect: process.env.DEV_DB_DIALECT,
+    timezone: "+07:00", // for writing to database
   },
   production: {
-    use_env_variable: "DATABASE_URL",
-    dialect: "postgres",
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
+    username: process.env.PROD_DB_USERNAME,
+    password: process.env.PROD_DB_PASSWORD,
+    database: process.env.PROD_DB_NAME,
+    host: process.env.PROD_DB_HOST,
+    dialect: process.env.PROD_DB_DIALECT,
+    timezone: "+07:00", //
   },
 };

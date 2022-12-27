@@ -5,6 +5,12 @@ const routes = require("./routes");
 const morgan = require("morgan");
 const cors = require("cors");
 
+app.use(
+  morgan("common", {
+    stream: fs.createWriteStream("./access.log", { flags: "a" }),
+  })
+);
+app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
